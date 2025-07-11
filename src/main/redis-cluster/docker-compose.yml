@@ -28,8 +28,8 @@ services:
   sentinel-1:
     image: redis:7.2
     container_name: sentinel-1
-    environment:
-      - SENTINEL_ANNOUNCE_IP=sentinel-1
+#    environment:
+#      - SENTINEL_ANNOUNCE_IP=sentinel-1
     volumes:
       - ./sentinel.conf:/tmp/sentinel.conf
       - sentinel-1-data:/data
@@ -45,14 +45,14 @@ services:
   sentinel-2:
     image: redis:7.2
     container_name: sentinel-2
-    environment:
-      - SENTINEL_ANNOUNCE_IP=sentinel-2
+#    environment:
+#      - SENTINEL_ANNOUNCE_IP=sentinel-2
     volumes:
       - ./sentinel.conf:/tmp/sentinel.conf
       - sentinel-2-data:/data
     restart: always
     depends_on:
-      - redis-slave-1
+      - redis-master
     command: sh -c "sleep 30 && cp /tmp/sentinel.conf /data/sentinel.conf && redis-sentinel /data/sentinel.conf"
     ports:
       - "6382:26379"
@@ -62,8 +62,8 @@ services:
   sentinel-3:
     image: redis:7.2
     container_name: sentinel-3
-    environment:
-      - SENTINEL_ANNOUNCE_IP=sentinel-3
+#    environment:
+#      - SENTINEL_ANNOUNCE_IP=sentinel-3
     volumes:
       - ./sentinel.conf:/tmp/sentinel.conf
       - sentinel-3-data:/data
