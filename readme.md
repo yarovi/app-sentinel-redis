@@ -41,3 +41,27 @@ docker exec redis-slave-1 redis-cli info replication
 Verificacion nuevo rol
 docker exec redis-master redis-cli info replication
 
+
+## Pruebas de persistencia
+1.- revisamos el esclavo
+docker exec -it redis-slave1 redis-cli INFO replication
+
+2.- revisamos log
+docker logs -f sentinel-1
+docker logs -f sentinel-2
+docker logs -f sentinel-3
+
+![img.png](img.png)
+
+3.- Se verifica el sclave
+docker exec -it redis-slave-1 redis-cli INFO replication
+![img_1.png](img_1.png)
+
+4.- Se retorna el maestro
+docker unpause redis-master
+
+5.- se verifica el maestro
+docker exec -it redis-master redis-cli INFO replication
+![img_2.png](img_2.png)
+
+fin
