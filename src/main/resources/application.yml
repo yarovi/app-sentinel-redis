@@ -1,0 +1,23 @@
+
+spring:
+  cache:
+    type: redis
+    redis:
+      sentinel:
+        master: localhost:6379
+        nodes:
+          - localhost:26379
+          - localhost:26380
+          - localhost:26381
+#      password: your_redis_password
+      timeout: 2000
+logging:
+  level:
+    root: info
+    org.springframework.cache: DEBUG
+    org.springframework.data.redis: DEBUG
+    org:
+      inamsay:
+        net:
+          appredissentinel: debug
+

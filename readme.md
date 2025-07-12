@@ -65,3 +65,12 @@ docker exec -it redis-master redis-cli INFO replication
 ![img_2.png](img_2.png)
 
 fin
+
+##Se puede Verificar el cache usando
+
+docker exec -it redis-master redis-cli -h redis-slave-1 -p 6379 ping
+
+Tambien se puede verificar desde slave
+docker exec -it redis-master redis-cli -h redis-slave-1 -p 6379
+
+![img_3.png](img_3.png)

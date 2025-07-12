@@ -1,0 +1,8 @@
+GET localhost:8080/api/ciudades/AR
+Content-Type: application/json
+
+###
+
+GET localhost:8080/api/ciudades/limpiar-cache
+Content-Type: application/json
+###
